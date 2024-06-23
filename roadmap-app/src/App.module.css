@@ -1,0 +1,25 @@
+
+
+.pageGrid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 80px auto;
+    grid-auto-flow: row;
+    gap: 16px;
+    padding: 16px;
+    width: 100%;
+    margin-left:80px;
+}
+
+.pageLayout {
+    display: flex;
+    height: auto;
+}
+
+.sideBar {
+    height: 100%;
+    width:80px;
+    background-color: black;
+    position: fixed;
+
+}

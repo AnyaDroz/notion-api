@@ -1,6 +1,6 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Card from "./components/Card";
-
+import styles from "./App.module.css"
 
 interface ThingToLearn {
     label: string;
@@ -8,31 +8,27 @@ interface ThingToLearn {
     status:string;
 }
 
+
+
+
 const App = () => {
     const [list, setList]= useState<ThingToLearn[]>([])
+    useEffect(()=>{
+        fetch("http://localhost:8000/")
+            .then((response) => response.json())
+            .then((payload:ThingToLearn[]) => {
+                setList(payload)
+                console.log(payload);
+            });
+},[])
 return (
-    <div>
-        <h1>Roadmap</h1>
-        <button
-            type="button"
-            onClick={() => {
-                fetch("http://localhost:8000/")
-                    .then((response) => response.json())
-                    .then((payload:ThingToLearn[]) => {
-                      setList(payload)
-                        console.log(payload);
-                    });
-            }}
-        >
-
-            Fetch List
-        </button>
-        <Card/>
-        <ol>
+    <div className={styles.pageLayout}>
+    <div className={styles.sideBar}></div>
+    <div className={styles.pageGrid}>
             {list.map((item, index) => {
-                return <li key={index}><a href={item.url}>{item.label}</a><div>{item.status}</div></li>
+                return <Card key = {index} label={item.label}/>
             })}
-        </ol>
+    </div>
     </div>
 )
 }

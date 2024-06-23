@@ -1,0 +1,19 @@
+.card {
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 8px;
+    width: auto;
+    padding: 16px;
+    box-sizing: border-box;
+    grid-column: span 4;
+    height: auto;
+    align-self: start;
+}
+
+.title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

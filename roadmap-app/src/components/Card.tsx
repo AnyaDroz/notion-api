@@ -1,8 +1,12 @@
-const Card = () => {
+import styles from "./Card.module.css"
+type Props = {
+    label: string
+}
+const Card = ({label}: Props) => {
     return (
-        <div>
-            <div>Category</div>
-            <div>Tutorial: How to set up a Notion API</div>
+        <div className={styles.card}>
+            <p>Category</p>
+            <h4 className={styles.title}>{label}</h4>
         </div>
     )
 }
