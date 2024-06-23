@@ -1,4 +1,5 @@
 import {useState} from "react";
+import Card from "./components/Card";
 
 
 interface ThingToLearn {
@@ -11,7 +12,7 @@ const App = () => {
     const [list, setList]= useState<ThingToLearn[]>([])
 return (
     <div>
-        <h1>Things to Learn</h1>
+        <h1>Roadmap</h1>
         <button
             type="button"
             onClick={() => {
@@ -26,6 +27,7 @@ return (
 
             Fetch List
         </button>
+        <Card/>
         <ol>
             {list.map((item, index) => {
                 return <li key={index}><a href={item.url}>{item.label}</a><div>{item.status}</div></li>
