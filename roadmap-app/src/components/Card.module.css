@@ -1,7 +1,6 @@
 .card {
     display: inline-flex;
-    justify-content: center;
-    flex-direction: column;
+    align-items: center;
     background-color: white;
     border-radius: 8px;
     width: auto;
@@ -9,11 +8,28 @@
     box-sizing: border-box;
     grid-column: span 4;
     height: auto;
+    gap: 12px;
     align-self: start;
+}
+
+.cardContent {
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    gap: 4px;
+    display: flex;
 }
 
 .title {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    width:auto;
+}
+
+.label {
+    aspect-ratio: 1/1;
+    height:50px;
+    background-color: blue;
+    border-radius: 8px;
 }

@@ -6,6 +6,7 @@ interface ThingToLearn {
     label: string;
     url: string;
     status:string;
+    category: string;
 }
 
 
@@ -23,10 +24,12 @@ const App = () => {
 },[])
 return (
     <div className={styles.pageLayout}>
-    <div className={styles.sideBar}></div>
+    <div className={styles.sideBar}>
+        <h3 className={styles.header}>Roadmap</h3>
+    </div>
     <div className={styles.pageGrid}>
             {list.map((item, index) => {
-                return <Card key = {index} label={item.label}/>
+                return <Card  url = {item.url} key = {index} label={item.label} category={item.category}/>
             })}
     </div>
     </div>

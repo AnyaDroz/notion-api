@@ -10,6 +10,7 @@ interface ThingToLearn {
     label: string;
     url: string;
     status: string;
+    category: string;
 }
 
 // The dotenv library will read from your .env file into these values on `process.env`
@@ -34,7 +35,7 @@ const port = 8000;
 const server = http.createServer(async (req, res) => {
 
 
-    try{
+
     res.setHeader("Access-Control-Allow-Origin", "*");
 
     switch (req.url) {
@@ -52,6 +53,8 @@ const server = http.createServer(async (req, res) => {
                 const labelCell = row.properties.label;
                 const urlCell = row.properties.url;
                 const statusCell = row.properties.status;
+                const categoryCell = row.properties.category;
+
 
                 // Depending on the column "type" we selected in Notion there will be different
                 // data available to us (URL vs Date vs text for example) so in order for Typescript
@@ -59,21 +62,26 @@ const server = http.createServer(async (req, res) => {
                 const isLabel = labelCell.type === "rich_text";
                 const isUrl = urlCell.type === "url";
                 const isStatus = statusCell.type === "select";
+                const isCategory= categoryCell.type === "rich_text"
+
 
                 // Verify the types are correct
-                if (isLabel && isUrl && isStatus) {
+                if (isLabel && isUrl && isStatus && isCategory) {
                     // Pull the string values of the cells off the column data
                     const label = labelCell.rich_text?.[0].plain_text;
                     const url = urlCell.url ?? "";
-                    const status = statusCell.select?.name ?? ""
+                    const status = statusCell.select?.name ?? "";
+                    const category = categoryCell.rich_text?.[0].plain_text
+
 
                     // Return it in our `ThingToLearn` shape
-                    return { label, url, status };
-                }
+                    return { label, url, status, category};
+                } else {
 
                 // If a row is found that does not match the rules we checked it will still return in the
                 // the expected shape but with a NOT_FOUND label
-                return { label: "NOT_FOUND", url: "", status: "" };
+                return { label: "NOT_FOUND", url: "", status: "", category: ""};
+                }
             });
 
             res.setHeader("Content-Type", "application/json");
@@ -85,9 +93,6 @@ const server = http.createServer(async (req, res) => {
             res.setHeader("Content-Type", "application/json");
             res.writeHead(404);
             res.end(JSON.stringify({ error: "Resource not found" }));
-    }}
-    catch(error) {
-        console.log(error)
     }
 });
 
