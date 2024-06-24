@@ -1,0 +1,26 @@
+
+.label {
+    aspect-ratio: 1/1;
+    height:50px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.notFound {
+    background-color: black;
+}
+
+.complete {
+    background-color: #0ED652;
+}
+
+.inProgress {
+    background-color: #2723E4;
+}
+
+.notStarted {
+    background-color: #5A5A5A;
+}

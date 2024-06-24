@@ -1,13 +1,16 @@
 import styles from "./Card.module.css"
+import ProgressIndicator from "./ProgressIndicator";
 type Props = {
     label: string
     url: string
     category: string
+    status: string
+    subject: string
 }
-const Card = ({label, url, category}: Props) => {
+const Card = ({label, url, category, status, subject}: Props) => {
     return (
         <div className={styles.card}>
-            <div className={styles.label}></div>
+            <ProgressIndicator status={status} subject = {subject}/>
             <div className={styles.cardContent}>
             <p>{category}</p>
                 <a href={url}>

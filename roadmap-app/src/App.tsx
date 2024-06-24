@@ -7,6 +7,7 @@ interface ThingToLearn {
     url: string;
     status:string;
     category: string;
+    subject: string;
 }
 
 
@@ -29,7 +30,7 @@ return (
     </div>
     <div className={styles.pageGrid}>
             {list.map((item, index) => {
-                return <Card  url = {item.url} key = {index} label={item.label} category={item.category}/>
+                return <Card subject = {item.subject} status ={item.status} url = {item.url} key = {index} label={item.label} category={item.category}/>
             })}
     </div>
     </div>
