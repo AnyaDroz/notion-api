@@ -12,10 +12,11 @@ const Card = ({label, url, category, status, subject}: Props) => {
         <div className={styles.card}>
             <ProgressIndicator status={status} subject = {subject}/>
             <div className={styles.cardContent}>
-            <p>{category}</p>
+            <p className={styles.categoryLabel}>{category}</p>
                 <a href={url}>
-            <h4 className={styles.title}>{label}</h4>
+            <h5 className={styles.title}>{label}</h5>
                 </a>
+                <p>12 Aug 23 - 13 Aug 23</p>
             </div>
         </div>
     )

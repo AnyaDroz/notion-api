@@ -15,7 +15,7 @@ const ProgressIndicator = ({status, subject}: Props)=> {
             [styles.inProgress]: status === "In progress",
             [styles.notStarted]: status === "Not started",
         })}>
-            <h5>{subject}</h5>
+            <h6>{subject}</h6>
         </div>
     )
 }
